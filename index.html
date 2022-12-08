@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-3.3.1.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				outline: none;
+				border: none;
+			}
+			body{
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgb(31,32,41);
+			}
+			.shell{
+				width: 300px;
+				height: 350px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: center;
+				perspective: 1000px;
+			}
+			.top{
+				width: 300px;
+				display: flex;
+				cursor: pointer;
+				justify-content: space-evenly;
+			}
+			.off,.on{
+				color: #fff;
+				transition: .5s;
+				font: 300 20px '';
+			}
+			.on{
+				opacity: .5;
+			}
+			.button{
+				width: 60px;
+				height: 25px;
+				background-color: rgb(255,235,167);
+				border-radius: 20px;
+				position: relative;
+			}
+			.ball{
+				position: absolute;
+				width: 25px;
+				height: 25px;
+				background-color: rgb(46,45,56);
+				border-radius: 50%;
+				transition: .5s;
+				box-shadow: 0 0 10px #000;
+				left: 0;
+				transform: translate(-1px);
+			}
+			.bottom{
+				width: 350px;
+				height: 300px;
+				background-image: url(img/src=http___pic1.win4000.com_mobile_2020-03-06_5e61b107e965b.jpg_down&refer=http___pic1.win4000.webp);
+				transform-style: preserve-3d;
+				position: relative;
+				transition: .7s;
+				border-radius: 5px;
+			}
+			.bottom>div{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+			.bottom>div h2{
+				color: #fff;
+			}
+			.bottom>div input{
+				width: 200px;
+				height: 25px;
+				padding: 0 10px;
+				background-color: rgb(31,32,41);
+				color: #fff;
+			}
+			/* .bottom>div button{
+				width: 80px;
+				height: 30px;
+				color: #333;
+				font-size: 15px;
+				background-color: rgb(255,235,167);
+				border-radius: 4px;
+				transition: .3s;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			.bottom>div button:hover{
+				box-shadow: 0 0 10px rgb(255,235,167);
+			} */
+			#sub{
+				width: 80px;
+				height: 30px;
+				color: #333;
+				font-size: 15px;
+				background-color: rgb(255,235,167);
+				border-radius: 4px;
+				transition: .3s;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			#sub:hover{
+				box-shadow: 0 0 10px rgb(255,235,167);
+			}
+			#sub2{
+				width: 80px;
+				height: 30px;
+				color: #333;
+				font-size: 15px;
+				background-color: rgb(255,235,167);
+				border-radius: 4px;
+				transition: .3s;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			#sub2:hover{
+				box-shadow: 0 0 10px rgb(255,235,167);
+			}
+			.signIn{
+				transform: translateZ(70px);
+			}
+			.signUp{
+				position: absolute;
+				top: 0;
+				transform: translateZ(-70px) rotateY(180deg);
+			}
+			#sp1{
+				position: absolute;
+				color: bisque;
+				bottom: 15px;
+			}
+			#sp2{
+				position: absolute;
+				color: bisque;
+				bottom: 11px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="shell">
+			<div class="top">
+				<span class="off">SIGN IN</span>
+				<div class="button">
+					<div class="ball">
+					</div>
+				</div>
+				<span class="on">SIGN UP</span>
+			</div>
+			<form id="form1" action="" method="post">
+			<div class="bottom">
+				<div class="signIn">
+					<h2>Sign in</h2>
+					<input id="l1" type="text" placeholder="Username"/>
+					<input id="l2" type="password" placeholder="Password"/>
+					<!-- <button onclick="myclick()" id="b1" type="button">Go</button> -->
+					<input type="submit" id="sub" name="" value="Go" />
+					<span id="sp1"></span>
+				</div>
+				
+				
+				<div class="signUp">
+					<form action="">
+					<h2>Sign Up</h2>
+					<input type="text" placeholder="Username"/>
+					<input type="text" placeholder="Password"/>
+					<input type="text" placeholder="Confirm Password"/>
+					<!-- <button type="button" id="sub2">Go</button> -->
+					
+					<input type="submit" id="sub2" name="" value="Go" />
+					<span id="sp2">6666</span>
+				</div>
+				</form>
+			</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		let button=document.querySelector('.button')
+		let ball=document.querySelector('.ball')
+		let bottom=document.querySelector('.bottom')
+		let off=document.querySelector('.off')
+		let on=document.querySelector('.on')
+		let index=0
+		button.addEventListener('click',()=>{
+			if(index==0){
+				index=1
+				ball.style.left=61+'%'
+				on.style.opacity=1
+				off.style.opacity=.5
+				bottom.style.transform="rotateY(180deg)"
+			}else{
+				index=0
+				ball.style.left=0+'%'
+				on.style.opacity=.5
+				off.style.opacity=1
+				bottom.style.transform="rotateY(0)"
+			}
+		})
+		
+			$("#form1").submit(function(){
+				console.log("bhhhhh")
+				var l1=$("#l1").val();
+				var l2=$("#l2").val();
+				let kml=/^(?:[\u3400-\u4DB5\u4E00-\u9FEA\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879][\uDC00-\uDFFF]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0])+$/;
+				if($('#l1').val()!=""){
+					if(kml.test($('#l1').val())){
+						if(l1=="呵呵"&&l2=="123"){
+							alert("登陆成功");
+							return true
+						}else{
+							alert("用户名或密码错误");
+							return false
+						}
+					}else{
+						// alert('名字不能带英文！')
+						shake("l1")
+						fuzhi('名字不能带英文！')
+						return false
+					}
+				}else{
+					alert("名字不能为空！")
+					return false
+				}
+			})
+	// 		document.getElementById('l1').addEventListener('mouseenter',function(e){
+	// 				elShaking(e.target)
+	// 			})
+	// 			function elShaking(el) {
+	// 				const maxAngle = 7 // 震动偏移角度
+	// 				const interval = 12 // 震动快慢，数字越小越快，太小DOM反应不过来，看不出动画
+	// 				const quarterCycle = 6 // 一次完整来回震动的四分之一周期
+	// 				let curAngle = 0
+	// 				let direction = 1
+	// 				const timer = setInterval(function(){
+	// 					if (direction > 0) {
+	// 					curAngle++
+	// 					if (curAngle === maxAngle) {
+	// 						direction = -1
+	// 					}
+	// 					} else {
+	// 					curAngle--
+	// 					if (curAngle === -maxAngle) {
+	// 						direction = 1
+	// 					}
+	// 					}
+	// 					el.style.transform = 'rotate(' + curAngle + 'deg)';
+	// 				}, interval)
+	// 				setTimeout(function(){
+	// 					clearInterval(timer)
+	// 				}, maxAngle * interval * quarterCycle);
+	// 			}
+	
+	
+	function fuzhi(ki){
+		$('#sp1').fadeIn()
+		$('#sp1').text(ki)
+		$('#sp1').fadeOut(3000)
+	}
+	function shake(o){
+	        var $panel = $("#"+o);
+	        box_left = 0;
+	        $panel.css({'left': box_left,'position':'relative'});
+	        for(var i=1; 4>=i; i++){
+	            $panel.animate({left:box_left-(20-5*i)},30);
+	            $panel.animate({left:box_left+(20-5*i)},30);
+	        }
+	    }
+	
+	
+
+		
+		
+		
+		
+	
+	</script>
+</html>

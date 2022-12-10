@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/jquery-3.3.1.js"></script>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin: 0;
+				outline: none;
+				border: none;
+			}
+			body{
+				height: 100vh;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				background-color: rgb(31,32,41);
+			}
+			.shell{
+				width: 300px;
+				height: 350px;
+				display: flex;
+				flex-direction: column;
+				justify-content: space-evenly;
+				align-items: center;
+				perspective: 1000px;
+			}
+			.top{
+				width: 300px;
+				display: flex;
+				cursor: pointer;
+				justify-content: space-evenly;
+			}
+			.off,.on{
+				color: #fff;
+				transition: .5s;
+				font: 300 20px '';
+			}
+			.on{
+				opacity: .5;
+			}
+			.button{
+				width: 60px;
+				height: 25px;
+				background-color: rgb(255,235,167);
+				border-radius: 20px;
+				position: relative;
+			}
+			.ball{
+				position: absolute;
+				width: 25px;
+				height: 25px;
+				background-color: rgb(46,45,56);
+				border-radius: 50%;
+				transition: .5s;
+				box-shadow: 0 0 10px #000;
+				left: 0;
+				transform: translate(-1px);
+			}
+			.bottom{
+				width: 350px;
+				height: 300px;
+				background-image: url(img/src=http___pic1.win4000.com_mobile_2020-03-06_5e61b107e965b.jpg_down&refer=http___pic1.win4000.webp);
+				transform-style: preserve-3d;
+				position: relative;
+				transition: .7s;
+				border-radius: 5px;
+			}
+			.bottom>div{
+				width: 100%;
+				height: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: space-evenly;
+			}
+			.bottom>div h2{
+				color: #fff;
+			}
+			.bottom>div input{
+				width: 200px;
+				height: 25px;
+				padding: 0 10px;
+				background-color: rgb(31,32,41);
+				color: #fff;
+			}
+			/* .bottom>div button{
+				width: 80px;
+				height: 30px;
+				color: #333;
+				font-size: 15px;
+				background-color: rgb(255,235,167);
+				border-radius: 4px;
+				transition: .3s;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			.bottom>div button:hover{
+				box-shadow: 0 0 10px rgb(255,235,167);
+			} */
+			#sub{
+				width: 80px;
+				height: 30px;
+				color: #333;
+				font-size: 15px;
+				background-color: rgb(255,235,167);
+				border-radius: 4px;
+				transition: .3s;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			#sub:hover{
+				box-shadow: 0 0 10px rgb(255,235,167);
+			}
+			#sub2{
+				width: 80px;
+				height: 30px;
+				color: #333;
+				font-size: 15px;
+				background-color: rgb(255,235,167);
+				border-radius: 4px;
+				transition: .3s;
+				margin-bottom: 10px;
+				cursor: pointer;
+			}
+			#sub2:hover{
+				box-shadow: 0 0 10px rgb(255,235,167);
+			}
+			.signIn{
+				transform: translateZ(70px);
+			}
+			.signUp{
+				position: absolute;
+				top: 0;
+				transform: translateZ(-70px) rotateY(180deg);
+			}
+			#sp1{
+				position: absolute;
+				color: bisque;
+				bottom: 15px;
+				
+			}
+			#sp2{
+				position: absolute;
+				color: bisque;
+				bottom: 11px;
+			}
+			#haoi{
+				width: 23px;
+				height: 23px;
+				position: absolute;
+				left: 260px;
+				bottom: 113px;
+			}
+			#haoi2{
+				width: 23px;
+				height: 23px;
+				position: absolute;
+				left: 260px;
+				bottom: 143px;
+			}
+			#haoi3{
+				width: 23px;
+				height: 23px;
+				position: absolute;
+				left: 260px;
+				bottom: 92px;
+			}
+			#form1{
+				position: absolute;
+			}
+			#form2{
+				position: absolute;
+			}
+		</style>
+	</head>
+	<body>
+		<form id="form1" action="www.baidu.com" method="post">
+		<div class="shell">
+			<div class="top">
+				<span class="off">SIGN IN</span>
+				
+				<div class="button">
+					<div class="ball">
+					</div>
+				</div>
+				<span class="on">SIGN UP</span>
+			</div>
+			
+			<div class="bottom">
+				<div class="signIn">
+					<h2>Sign in</h2>
+					<input id="l1" type="text" placeholder="Username"/>
+					<input id="l2" type="password" placeholder="Password"/><img id="haoi" src="img/眼睛_隐藏.svg" alt="">
+					<!-- <button onclick="myclick()" id="b1" type="button">Go</button> -->
+					<input type="submit" id="sub" name="" value="Go" />
+					
+					<span id="sp1"></span>
+						</form>
+						<form id="form2" action="www.sougou.com" method="post">
+				</div>
+		
+				
+				<div class="signUp">
+					
+					<h2>Sign Up</h2>
+					<input id="l3" type="text" placeholder="Username"/>
+					<input id="l4" type="password" placeholder="Password"/><img id="haoi2" src="img/眼睛_隐藏.svg" alt="">
+					<input id="l5" type="password" placeholder="Confirm Password"/><img id="haoi3" src="img/眼睛_隐藏.svg" alt="">
+					<!-- <button type="button" id="sub2">Go</button> -->
+					
+					<input type="submit" id="sub2" name="" value="Go" />
+					</form>
+					<span id="sp2">6666</span>
+					
+				</div>
+				
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript">
+		let button=document.querySelector('.button')
+		let ball=document.querySelector('.ball')
+		let bottom=document.querySelector('.bottom')
+		let off=document.querySelector('.off')
+		let on=document.querySelector('.on')
+		let index=0
+		button.addEventListener('click',()=>{
+			if(index==0){
+				index=1
+				ball.style.left=61+'%'
+				on.style.opacity=1
+				off.style.opacity=.5
+				bottom.style.transform="rotateY(180deg)"
+			}else{
+				index=0
+				ball.style.left=0+'%'
+				on.style.opacity=.5
+				off.style.opacity=1
+				bottom.style.transform="rotateY(0)"
+			}
+		})
+		
+			$("#form1").submit(function(){
+				let kml=/^(?:[\u3400-\u4DB5\u4E00-\u9FEA\uFA0E\uFA0F\uFA11\uFA13\uFA14\uFA1F\uFA21\uFA23\uFA24\uFA27-\uFA29]|[\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879][\uDC00-\uDFFF]|\uD869[\uDC00-\uDED6\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF34\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0])+$/;
+				if($('#l1').val()!=""){
+					if(kml.test($('#l1').val())){
+						if($('#l1').val()=="何民坤"&&$('#l2').val()=="123"){
+							alert("登陆成功");
+							return true
+						}else{
+							shake("l1")
+							shake("l2")
+							fuzhi("用户名或密码错误")
+							return false
+						}
+					}else{
+						shake("l1")
+						fuzhi('名字不能带英文！')
+						return false
+					}
+				}else{
+					shake("l1")
+					fuzhi("名字不能为空！")
+					return false
+				}
+			})
+			$("#form2").submit(function(){
+				alert(1)
+			})
+	// 		document.getElementById('l1').addEventListener('mouseenter',function(e){
+	// 				elShaking(e.target)
+	// 			})
+	// 			function elShaking(el) {
+	// 				const maxAngle = 7 // 震动偏移角度
+	// 				const interval = 12 // 震动快慢，数字越小越快，太小DOM反应不过来，看不出动画
+	// 				const quarterCycle = 6 // 一次完整来回震动的四分之一周期
+	// 				let curAngle = 0
+	// 				let direction = 1
+	// 				const timer = setInterval(function(){
+	// 					if (direction > 0) {
+	// 					curAngle++
+	// 					if (curAngle === maxAngle) {
+	// 						direction = -1
+	// 					}
+	// 					} else {
+	// 					curAngle--
+	// 					if (curAngle === -maxAngle) {
+	// 						direction = 1
+	// 					}
+	// 					}
+	// 					el.style.transform = 'rotate(' + curAngle + 'deg)';
+	// 				}, interval)
+	// 				setTimeout(function(){
+	// 					clearInterval(timer)
+	// 				}, maxAngle * interval * quarterCycle);
+	// 			}
+			 
+	
+	let ww=0
+	function fuzhi(ki){
+		let res=$('#sp1').css('display')
+		if(res=='none'||ww==0){
+			$('#sp1').fadeIn()
+			$('#sp1').html(ki)
+			$('#sp1').fadeOut(3000)
+			ww++
+		}
+		
+			
+			// setTimeout($('#sp1').html(null),3000)
+			
+		
+		
+	}
+	
+	function shake(o){
+	        var $panel = $("#"+o);
+	        box_left = 0;
+	        $panel.css({'left': box_left,'position':'relative'});
+	        for(var i=1; 4>=i; i++){
+	            $panel.animate({left:box_left-(20-5*i)},30);
+	            $panel.animate({left:box_left+(20-5*i)},30);
+	        }
+	    }
+	
+	
+		let lop=0
+		$('#haoi').click(function(){
+			if(lop==0){
+				$('#haoi').attr('src','img/眼睛_显示.svg')
+				$('#l2').attr('type','text')
+				lop=1
+			}
+			else if(lop==1){
+				$('#haoi').attr('src','img/眼睛_隐藏.svg')
+				$('#l2').attr('type','password')
+				lop=0
+			}
+		})
+		
+		let lop2=0
+		$('#haoi2').click(function(){
+			if(lop2==0){
+				$('#haoi2').attr('src','img/眼睛_显示.svg')
+				$('#l4').attr('type','text')
+				lop2=1
+			}
+			else if(lop2==1){
+				$('#haoi2').attr('src','img/眼睛_隐藏.svg')
+				$('#l4').attr('type','password')
+				lop2=0
+			}
+		})
+		
+		
+		let lop3=0
+		$('#haoi3').click(function(){
+			if(lop3==0){
+				$('#haoi3').attr('src','img/眼睛_显示.svg')
+				$('#l5').attr('type','text')
+				lop3=1
+			}
+			else if(lop3==1){
+				$('#haoi3').attr('src','img/眼睛_隐藏.svg')
+				$('#l5').attr('type','password')
+				lop3=0
+			}
+		})
+		
+	
+	</script>
+</html>
